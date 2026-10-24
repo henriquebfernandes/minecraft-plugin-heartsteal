@@ -1,6 +1,5 @@
-settings:
-  initial-health-points: 20.0
-  max-health-points: 20.0
-  min-health-points: 2.0
-  kill-reward: 2.0
-  death-punishment: 2.0
+initial_health_points: 20
+max_health_points: 20
+min_health_points: 2
+kill_reward: 2
+death_punishment: 2

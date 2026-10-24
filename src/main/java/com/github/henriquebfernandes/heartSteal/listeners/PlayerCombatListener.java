@@ -1,6 +1,6 @@
 package com.github.henriquebfernandes.heartSteal.listeners;
 
-import com.github.henriquebfernandes.heartSteal.manager.HealthManager;
+import com.github.henriquebfernandes.heartSteal.managers.HealthManager;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

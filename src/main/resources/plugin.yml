@@ -4,3 +4,8 @@ version: '${version}'
 main: com.github.henriquebfernandes.heartSteal.HeartStealPlugin
 api-version: '26.3'
 load: POSTWORLD
+
+permissions:
+  heartsteal.admin:
+    description: Allows access to all HeartSteal commands
+    default: op
