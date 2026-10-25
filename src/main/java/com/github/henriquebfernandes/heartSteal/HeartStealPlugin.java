@@ -2,7 +2,6 @@ package com.github.henriquebfernandes.heartSteal;
 
 import com.github.henriquebfernandes.heartSteal.commands.HeartStealCommand;
 import com.github.henriquebfernandes.heartSteal.config.HeartStealConfig;
-import com.github.henriquebfernandes.heartSteal.data.PlayerData;
 import com.github.henriquebfernandes.heartSteal.managers.HealthManager;
 import com.github.henriquebfernandes.heartSteal.listeners.PlayerCombatListener;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
@@ -16,20 +15,17 @@ public final class HeartStealPlugin extends JavaPlugin {
         getLogger().info("[HeartSteal] Config loaded");
 
         //HeartStealConfig
-        HeartStealConfig config = new HeartStealConfig(this);
-
-        //PlayerData
-        PlayerData playerData = new PlayerData(this, config);
+        HeartStealConfig heartStealConfig = new HeartStealConfig(this);
 
         //HealthManager
-        HealthManager healthManager = new HealthManager(playerData);
+        HealthManager healthManager = new HealthManager(heartStealConfig);
 
         //PlayerCombatListener
         getServer().getPluginManager().registerEvents(new PlayerCombatListener(healthManager),this);
 
         //HeartStealCommand
         getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, event -> {
-            event.registrar().register(HeartStealCommand.create(playerData, healthManager));
+            event.registrar().register(HeartStealCommand.create(healthManager));
         });
 
         getLogger().info("[HeartSteal] Enabling HeartSteal");
