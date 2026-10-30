@@ -3,7 +3,7 @@ package com.github.henriquebfernandes.heartSteal;
 import com.github.henriquebfernandes.heartSteal.commands.HeartStealCommand;
 import com.github.henriquebfernandes.heartSteal.config.HeartStealConfig;
 import com.github.henriquebfernandes.heartSteal.managers.HealthManager;
-import com.github.henriquebfernandes.heartSteal.listeners.PlayerCombatListener;
+import com.github.henriquebfernandes.heartSteal.listeners.PlayerListener;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,8 +20,8 @@ public final class HeartStealPlugin extends JavaPlugin {
         //HealthManager
         HealthManager healthManager = new HealthManager(heartStealConfig);
 
-        //PlayerCombatListener
-        getServer().getPluginManager().registerEvents(new PlayerCombatListener(healthManager),this);
+        //PlayerListener
+        getServer().getPluginManager().registerEvents(new PlayerListener(healthManager),this);
 
         //HeartStealCommand
         getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, event -> {

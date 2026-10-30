@@ -16,7 +16,7 @@ public class HealthManager {
         var maxHealth = getMaxHealth(player);
         int value = Math.max(
                 (int) maxHealth.getBaseValue()
-                        - heartStealConfig.deathPunishment,
+                        - heartStealConfig.punishment,
                 heartStealConfig.minHP
         );
         maxHealth.setBaseValue(value);
@@ -27,10 +27,11 @@ public class HealthManager {
         var maxHealth = getMaxHealth(player);
         int value = Math.min(
                 (int) maxHealth.getBaseValue()
-                        + heartStealConfig.killReward,
+                        + heartStealConfig.reward,
                 heartStealConfig.maxHP
         );
         maxHealth.setBaseValue(value);
+        player.setHealth(player.getHealth() + heartStealConfig.reward);
         return value;
     }
 
@@ -38,8 +39,8 @@ public class HealthManager {
         var maxHealth = getMaxHealth(player);
         int value = Math.clamp(
                 amount,
-                heartStealConfig.maxHP,
-                heartStealConfig.minHP
+                heartStealConfig.minHP,
+                heartStealConfig.maxHP
         );
         maxHealth.setBaseValue(value);
         return value;
