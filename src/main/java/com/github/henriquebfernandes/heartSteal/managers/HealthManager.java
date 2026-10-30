@@ -31,7 +31,7 @@ public class HealthManager {
                 heartStealConfig.maxHP
         );
         maxHealth.setBaseValue(value);
-        player.setHealth(player.getHealth() + heartStealConfig.reward);
+        player.setHealth(Math.min(player.getHealth() + heartStealConfig.reward, value));
         return value;
     }
 
