@@ -6,10 +6,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 
-public class PlayerCombatListener implements Listener {
+public class PlayerListener implements Listener {
     private final HealthManager healthManager;
-    public PlayerCombatListener(HealthManager healthManager) {
+    public PlayerListener(HealthManager healthManager) {
         this.healthManager = healthManager;
     }
 
@@ -21,6 +22,15 @@ public class PlayerCombatListener implements Listener {
         Player killer = victim.getKiller();
         if (killer != null) {
             healthManager.reward(killer);
+        }
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+
+        if (!player.hasPlayedBefore()) {
+            healthManager.reset(player);
         }
     }
 }
