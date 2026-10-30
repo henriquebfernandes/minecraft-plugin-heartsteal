@@ -39,10 +39,6 @@ public final class HeartStealConfig {
             throw new IllegalArgumentException("'max_hp' must be greater than 0.");
         }
 
-        if (reward <= 0) {
-            throw new IllegalArgumentException("'min_hp' must be greater than 0.");
-        }
-
         if (maxHP < minHP) {
             throw new IllegalArgumentException("'max_hp' must be greater than or equal to 'min_hp'.");
         }
